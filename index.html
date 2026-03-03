@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Ropot Ion</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background: #f0f2f5;
+            color: #2d3748;
+            line-height: 1.6;
+        }
+
+        .page {
+            max-width: 850px;
+            margin: 30px auto;
+            background: #fff;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 1120px;
+        }
+
+        /* --- Sidebar --- */
+        .sidebar {
+            background: #1a202c;
+            color: #e2e8f0;
+            padding: 40px 28px;
+        }
+
+        .avatar {
+            width: 120px; height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            overflow: hidden;
+        }
+
+        .avatar img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+        }
+
+        .sidebar h1 {
+            text-align: center;
+            font-size: 22px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .sidebar .subtitle {
+            text-align: center;
+            font-size: 12px;
+            color: #a0aec0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        .sidebar h2 {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: #667eea;
+            margin-bottom: 14px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #2d3748;
+        }
+
+        .sidebar section { margin-bottom: 28px; }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            margin-bottom: 10px;
+            color: #cbd5e0;
+        }
+
+        .contact-item .icon {
+            width: 28px; height: 28px;
+            background: #2d3748;
+            border-radius: 6px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 13px;
+            flex-shrink: 0;
+        }
+
+        /* Skills bars */
+        .skill-row { margin-bottom: 12px; }
+        .skill-row .label {
+            font-size: 13px;
+            margin-bottom: 4px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .skill-bar {
+            height: 6px;
+            background: #2d3748;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .skill-bar .fill {
+            height: 100%;
+            border-radius: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .lang-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            margin-bottom: 8px;
+            color: #cbd5e0;
+        }
+        .lang-item .level {
+            color: #a0aec0;
+            font-size: 11px;
+        }
+
+        .soft-skills { list-style: none; }
+        .soft-skills li {
+            font-size: 13px;
+            color: #cbd5e0;
+            padding: 4px 0;
+            padding-left: 16px;
+            position: relative;
+        }
+        .soft-skills li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+        }
+
+        /* --- Main content --- */
+        .main {
+            padding: 40px 36px;
+        }
+
+        .main h2 {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: #667eea;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #edf2f7;
+        }
+
+        .main section { margin-bottom: 30px; }
+
+        .profile-text {
+            font-size: 14px;
+            color: #4a5568;
+            line-height: 1.75;
+        }
+
+        /* Timeline entries */
+        .entry {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 22px;
+            border-left: 2px solid #e2e8f0;
+        }
+
+        .entry::before {
+            content: '';
+            position: absolute;
+            left: -6px; top: 6px;
+            width: 10px; height: 10px;
+            background: #667eea;
+            border-radius: 50%;
+        }
+
+        .entry .period {
+            font-size: 11px;
+            color: #a0aec0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2px;
+        }
+
+        .entry h3 {
+            font-size: 15px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 2px;
+        }
+
+        .entry .place {
+            font-size: 13px;
+            color: #667eea;
+            font-weight: 500;
+            margin-bottom: 6px;
+        }
+
+        .entry p, .entry ul {
+            font-size: 13px;
+            color: #718096;
+        }
+
+        .entry ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .entry ul li {
+            padding: 2px 0 2px 14px;
+            position: relative;
+        }
+
+        .entry ul li::before {
+            content: '–';
+            position: absolute;
+            left: 0;
+            color: #a0aec0;
+        }
+
+        /* Tech tags */
+        .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+        .tag {
+            font-size: 11px;
+            padding: 3px 10px;
+            background: #edf2f7;
+            color: #4a5568;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        /* Project cards */
+        .project {
+            background: #f7fafc;
+            border-radius: 8px;
+            padding: 16px 18px;
+            margin-bottom: 14px;
+            border-left: 3px solid #667eea;
+        }
+
+        .project h3 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 4px;
+        }
+
+        .project p {
+            font-size: 13px;
+            color: #718096;
+            margin-bottom: 8px;
+        }
+
+        @media print {
+            body { background: #fff; }
+            .page { box-shadow: none; margin: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="avatar"><img src="IMG20260227222300.jpg" alt="Ropot Ion"></div>
+        <h1>Ropot Ion</h1>
+        <div class="subtitle">Junior Developer</div>
+
+        <section>
+            <h2>Contact</h2>
+            <div class="contact-item">
+                <span class="icon">📧</span> ropotion240@gmail.com
+            </div>
+            <div class="contact-item">
+                <span class="icon">📱</span> <a href="tel:+37368003981" style="color:#cbd5e0;text-decoration:none;">+373 68 003 981</a>
+            </div>
+            <div class="contact-item">
+                <span class="icon">📍</span> Chișinău, Moldova
+            </div>
+            <div class="contact-item">
+                <span class="icon">🔗</span> <a href="https://www.linkedin.com/in/ion-ropot-2b3a983b1" target="_blank" style="color:#cbd5e0;text-decoration:none;">linkedin.com/in/ion-ropot</a>
+            </div>
+            <div class="contact-item">
+                <span class="icon">💻</span> <a href="https://github.com/ropotion240-oss" target="_blank" style="color:#cbd5e0;text-decoration:none;">github.com/ropotion240-oss</a>
+            </div>
+        </section>
+
+        <section>
+            <h2>Competențe tehnice</h2>
+            <div class="skill-row">
+                <div class="label"><span>Java</span></div>
+                <div class="skill-bar"><div class="fill" style="width:40%"></div></div>
+            </div>
+            <div class="skill-row">
+                <div class="label"><span>Python</span></div>
+                <div class="skill-bar"><div class="fill" style="width:70%"></div></div>
+            </div>
+            <div class="skill-row">
+                <div class="label"><span>JavaScript</span></div>
+                <div class="skill-bar"><div class="fill" style="width:60%"></div></div>
+            </div>
+            <div class="skill-row">
+                <div class="label"><span>HTML / CSS</span></div>
+                <div class="skill-bar"><div class="fill" style="width:40%"></div></div>
+            </div>
+            <div class="skill-row">
+                <div class="label"><span>C / C++</span></div>
+                <div class="skill-bar"><div class="fill" style="width:45%"></div></div>
+            </div>
+            <div class="skill-row">
+                <div class="label"><span>Git / GitHub</span></div>
+                <div class="skill-bar"><div class="fill" style="width:50%"></div></div>
+            </div>
+            <div class="skill-row">
+                <div class="label"><span>SQL</span></div>
+                <div class="skill-bar"><div class="fill" style="width:45%"></div></div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Limbi</h2>
+            <div class="lang-item">Română <span class="level">Nativ</span></div>
+            <div class="lang-item">Rusă <span class="level">Fluent</span></div>
+            <div class="lang-item">Engleză <span class="level">Intermediar (B1-B2)</span></div>
+        </section>
+
+        <section>
+            <h2>Abilități personale</h2>
+            <ul class="soft-skills">
+                <li>Comunicare eficientă</li>
+                <li>Lucru în echipă</li>
+                <li>Gestionarea stresului</li>
+                <li>Responsabilitate</li>
+                <li>Orientare spre detalii</li>
+                <li>Adaptabilitate</li>
+                <li>Gândire analitică</li>
+                <li>Dorință de învățare</li>
+            </ul>
+        </section>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+        <section>
+            <h2>Profil profesional</h2>
+            <p class="profile-text">
+                Student ambițios la Universitatea Tehnică, pasionat de dezvoltarea software
+                și aflat la început de carieră în domeniul IT. Posed cunoștințe solide de Java și Python,
+                completate de experiență practică prin proiecte academice și personale.
+                Cei 6 ani de experiență în domeniul de deservire(chelner) mi-am dezvoltat abilități puternice
+                de comunicare, lucru în echipă și gestionarea situațiilor sub presiune.
+                Motivat să învăț tehnologii noi și să contribui activ într-o echipă de dezvoltare.
+            </p>
+        </section>
+
+        <section>
+            <h2>Educație</h2>
+            <div class="entry">
+                <div class="period">2024 – Prezent</div>
+                <h3>Licență în Informatică/Specialitatea:Clculatoare si Rețele </h3>
+                <div class="place">Universitatea Tehnică a Moldovei</div>
+                <p>Cursuri relevante: Programare Orientată pe Obiecte, Structuri de Date
+                   și Algoritmi, Baze de Date, Rețele de Calculatoare, Dezvoltare Web.</p>
+            </div>
+            <div class="entry">
+                <div class="period">2012 – 2024</div>
+                <h3>Diploma de Bacalaureat</h3>
+                <div class="place">Liceul Teoretic ,,Onisifor Ghibu,,</div>
+                <p>Profil real.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Experiență profesională</h2>
+            <div class="entry">
+                <div class="period">2018 – Prezent</div>
+                <h3>Chelner</h3>
+                <div class="place">Restaurant / Sydney or.Orhei</div>
+                <ul>
+                    <li>Comunicare directă cu clienții și gestionarea solicitărilor</li>
+                    <li>Lucru eficient în echipă în mediu cu ritm alert</li>
+                    <li>Gestionarea situațiilor de stres și rezolvarea conflictelor</li>
+                    <li>Responsabilitate în gestionarea comenzilor și a încasărilor</li>
+                    <li>Dezvoltarea abilităților de organizare și multitasking</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Proiecte personale</h2>
+
+            <div class="project">
+                <h3>📋 Task Manager – Aplicație Web</h3>
+                <p>Aplicație web de gestionare a sarcinilor cu autentificare, creare/editare/ștergere
+                   de taskuri și filtrare după prioritate.</p>
+                <div class="tags">
+                    <span class="tag">Java</span>
+                    <span class="tag">Spring Boot</span>
+                    <span class="tag">HTML/CSS</span>
+                    <span class="tag">SQL</span>
+                </div>
+            </div>
+
+            <div class="project">
+                <h3>🤖 Chatbot Discord / Telegram</h3>
+                <p>Bot automatizat care răspunde la comenzi, moderare de bază
+                   și integrare cu API-uri externe.</p>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">API REST</span>
+                    <span class="tag">JSON</span>
+                </div>
+            </div>
+
+            <div class="project">
+                <h3>🌐 Portofoliu Personal – Website</h3>
+                <p>Site responsive de prezentare personală cu secțiuni pentru proiecte,
+                   competențe și informații de contact.</p>
+                <div class="tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">JavaScript</span>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+</body>
+</html>
